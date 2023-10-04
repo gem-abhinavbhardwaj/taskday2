@@ -17,7 +17,9 @@ pipeline {
         sh 'echo "Deploying..."'
       }
     }
-    post {
+
+  }
+  post {
       always {
         cleanWs()
         dir("${env.WORKSPACE}@tmp") {
@@ -32,6 +34,4 @@ pipeline {
       }
     }
 
-
-  }
 }
