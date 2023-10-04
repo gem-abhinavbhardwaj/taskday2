@@ -19,12 +19,6 @@ pipeline {
     }
 
   }
-  post {
-      always {
-        dir("${env.WORKSPACE}@tmp") {
-          deleteDir()
-        }
-      }
-    }
+  
 
 }
