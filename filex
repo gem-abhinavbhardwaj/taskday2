@@ -1,4 +1,3 @@
-
 pipeline {
   agent any
   stages {
@@ -6,24 +5,31 @@ pipeline {
       steps {
         sh 'echo "Building..."'
       }
+      post {
+        always {
+          cleanWs()
+        }
+      }
     }
     stage('Test') {
       steps {
         sh 'echo "Testing..."'
+      }
+      post {
+        always {
+          cleanWs()
+        }
       }
     }
     stage('Deploy') {
       steps {
         sh 'echo "Deploying..."'
       }
-    }
-  }
-  post {
-    always {
-      script {
-        cleanws()
+      post {
+        always {
+          cleanWs()
+        }
       }
     }
   }
 }
-
