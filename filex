@@ -1,5 +1,4 @@
 
-
 pipeline {
   agent any
   stages {
@@ -19,4 +18,12 @@ pipeline {
       }
     }
   }
+  post {
+    always {
+      script {
+        cleanws()
+      }
+    }
+  }
 }
+
