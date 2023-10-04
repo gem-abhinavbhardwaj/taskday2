@@ -18,6 +18,12 @@ pipeline {
       }
     }
 
+    stage('Temp') {
+      steps {
+        sh 'echo "Temp..."'
+      }
+    }
+
   }
   
 
