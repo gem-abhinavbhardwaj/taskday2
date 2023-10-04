@@ -22,7 +22,7 @@ pipeline {
       script {
         def workspaceTmpDir = "${env.WORKSPACE}@tmp"
         if (fileExists(workspaceTmpDir)) {
-          deleteDir(dir: workspaceTmpDir, failOnError: false)
+          sh "rm -rf ${workspaceTmpDir}"
         }
       }
     }
