@@ -2,6 +2,8 @@ pipeline {
   agent any
   stages {
 
+ 
+
     stage('Build') {
       steps {
         sh 'echo "Building..."'
@@ -18,7 +20,10 @@ pipeline {
       }
     }
 
-   post {
+ 
+
+  }
+  post {
       always {
         dir("${env.WORKSPACE}@tmp") {
           deleteDir()
@@ -26,7 +31,6 @@ pipeline {
       }
     }
 
-  }
-  
+ 
 
 }
