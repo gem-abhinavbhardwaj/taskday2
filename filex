@@ -1,14 +1,10 @@
 pipeline {
   agent any
   stages {
+
     stage('Build') {
       steps {
         sh 'echo "Building..."'
-      }
-      post {
-        always {
-          cleanWs()
-        }
       }
     }
     stage('Test') {
@@ -21,5 +17,21 @@ pipeline {
         sh 'echo "Deploying..."'
       }
     }
+    post {
+      always {
+        cleanWs()
+        dir("${env.WORKSPACE}@tmp") {
+          deleteDir()
+        }
+        dir("${env.WORKSPACE}@script") {
+          deleteDir()
+        }
+        dir("${env.WORKSPACE}@script@tmp") {
+          deleteDir()
+        }
+      }
+    }
+
+
   }
 }
