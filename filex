@@ -18,9 +18,11 @@ pipeline {
       }
     }
 
-    stage('Temp') {
-      steps {
-        sh 'echo "Temp..."'
+   post {
+      always {
+        dir("${env.WORKSPACE}@tmp") {
+          deleteDir()
+        }
       }
     }
 
