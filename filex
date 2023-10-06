@@ -1,6 +1,9 @@
 pipeline {
   agent any
   stages {
+
+ 
+
     stage('Build') {
       steps {
         sh 'echo "Building..."'
@@ -16,15 +19,18 @@ pipeline {
         sh 'echo "Deploying..."'
       }
     }
+
+ 
+
   }
   post {
-    always {
-      script {
-        def workspaceTmpDir = "${env.WORKSPACE}@tmp"
-        if (fileExists(workspaceTmpDir)) {
-          sh "rm -rf ${workspaceTmpDir}"
+      always {
+        dir("${env.WORKSPACE}@tmp") {
+          deleteDir()
         }
       }
     }
-  }
+
+ 
+
 }
