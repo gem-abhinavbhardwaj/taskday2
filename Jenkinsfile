@@ -7,10 +7,10 @@ pipeline {
 
         // Add a dir step to navigate to the workspace directory
         
-        dir("${env.workspace}") {
+         cd /var/lib/jenkins/workspace
           // Use sh to run the rm command to delete folders with @tmp extension
           sh 'rm -rf *@tmp'
-        }
+        
       }
     }
     stage('Test') {
