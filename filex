@@ -7,6 +7,13 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "Building..."'
+ post {
+      always {
+        dir("${env.WORKSPACE}@tmp") {
+          deleteDir()
+        }
+      }
+    }
       }
     }
     stage('Test') {
@@ -23,13 +30,7 @@ pipeline {
  
 
   }
-  post {
-      always {
-        dir("${env.WORKSPACE}@tmp") {
-          deleteDir()
-        }
-      }
-    }
+ 
 
  
 
