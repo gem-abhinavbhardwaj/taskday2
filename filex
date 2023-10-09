@@ -1,16 +1,12 @@
 pipeline {
   agent any
   stages {
+
+ 
+
     stage('Build') {
       steps {
         sh 'echo "Building..."'
-
-        // Add a dir step to navigate to the workspace directory
-        dir("${env.WORKSPACE}") {
-          // Use grep to search for @tmp and _ws_cleanup patterns in files
-          sh 'grep -rl "@tmp" . | xargs rm -rf'
-          sh 'grep -rl "_ws_cleanup" . | xargs rm -rf'
-        }
       }
     }
     stage('Test') {
@@ -23,5 +19,18 @@ pipeline {
         sh 'echo "Deploying..."'
       }
     }
+
+ 
+
   }
+  post {
+      always {
+        dir("${env.WORKSPACE}@tmp") {
+          deleteDir()
+        }
+      }
+    }
+
+ 
+
 }
