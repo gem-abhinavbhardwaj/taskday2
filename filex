@@ -4,14 +4,13 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "Building..."'
-        
-       dir("${env.WORKSPACE}") {
-           sh 'grep "@tmp *_ws_cleanup" *'
-          sh 'ls'          // Use sh to run the rm command to delete the @tmp and _ws_cleanup folders
-          sh 'rm -rf *@tmp *_ws_cleanup'
-        }
-       
 
+        // Add a dir step to navigate to the workspace directory
+        dir("${env.WORKSPACE}") {
+          // Use grep to search for @tmp and _ws_cleanup patterns in files
+          sh 'grep -rl "@tmp" . | xargs rm -rf'
+          sh 'grep -rl "_ws_cleanup" . | xargs rm -rf'
+        }
       }
     }
     stage('Test') {
