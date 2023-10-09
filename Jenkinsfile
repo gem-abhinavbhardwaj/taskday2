@@ -4,9 +4,12 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "Building..."'
-         sh "cd ${env.WORKSPACE}"
+        //sh "cd ${env.WORKSPACE}"
+         dir("${env.WORKSPACE}@tmp") {
+          deleteDir()
+         }
           // Use find to locate folders with @tmp extension and delete them
-          sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+        //  sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
         
 
        
