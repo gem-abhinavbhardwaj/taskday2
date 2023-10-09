@@ -5,8 +5,11 @@ pipeline {
       steps {
         sh 'echo "Building..."'
 
-        // Use sh to run the rm command to delete the cleanup@tmp folder
-        sh 'rm -rf /var/lib/jenkins/workspace/cleanup@tmp'
+        // Add a dir step to navigate to the workspace directory
+        dir("${env.WORKSPACE}") {
+          // Use find to locate folders with @tmp extension and delete them
+          sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+        }
       }
     }
     stage('Test') {
