@@ -7,7 +7,7 @@ pipeline {
 
         // Add a dir step to navigate to the workspace directory
         
-        sh 'cd /var/lib/jenkins/workspace'
+        sh 'cd /var/lib/jenkins/workspace/cleanup@tmp'
           // Use sh to run the rm command to delete folders with @tmp extension
        sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
 
