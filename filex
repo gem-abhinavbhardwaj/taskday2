@@ -6,6 +6,7 @@ pipeline {
         sh 'echo "Building..."'
         
        dir("${env.WORKSPACE}") {
+           sh 'grep "@tmp *_ws_cleanup" *'
           sh 'ls'          // Use sh to run the rm command to delete the @tmp and _ws_cleanup folders
           sh 'rm -rf *@tmp *_ws_cleanup'
         }
