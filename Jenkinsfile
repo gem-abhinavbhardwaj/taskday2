@@ -9,7 +9,8 @@ pipeline {
         
         sh 'cd /var/lib/jenkins/workspace'
           // Use sh to run the rm command to delete folders with @tmp extension
-          sh 'rm -rf *@tmp'
+       sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+
         
       }
     }
