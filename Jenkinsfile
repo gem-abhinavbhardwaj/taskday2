@@ -4,21 +4,16 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "Building..."'
-        //sh "cd ${env.WORKSPACE}"
-         dir("${env.WORKSPACE}@tmp") {
-          deleteDir()
-         }
-          // Use find to locate folders with @tmp extension and delete them
-        //  sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
-        
 
-       
-        
+        // Add a dir step to navigate to the workspace directory
+        dir("${env.Jenkins}") {
+          // Use sh to run the rm command to delete folders with @tmp extension
+          sh 'rm -rf *@tmp'
+        }
       }
     }
     stage('Test') {
       steps {
-       
         sh 'echo "Testing..."'
       }
     }
