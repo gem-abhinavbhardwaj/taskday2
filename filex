@@ -6,7 +6,8 @@ pipeline {
         sh 'echo "Building..."'
         
        
-        sh 'rm -rf ${env.WORKSPACE}/cleanup@tmp'
+        sh "rm -rf ${env.WORKSPACE}/cleanup@tmp"
+
       }
     }
     stage('Test') {
