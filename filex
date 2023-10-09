@@ -1,19 +1,12 @@
 pipeline {
   agent any
   stages {
-
- 
-
     stage('Build') {
       steps {
         sh 'echo "Building..."'
- post {
-      always {
-        dir("${env.WORKSPACE}@tmp") {
-          deleteDir()
-        }
-      }
-    }
+        
+       
+        sh 'rm -rf ${env.WORKSPACE}/cleanup@tmp'
       }
     }
     stage('Test') {
@@ -26,12 +19,5 @@ pipeline {
         sh 'echo "Deploying..."'
       }
     }
-
- 
-
   }
- 
-
- 
-
 }
