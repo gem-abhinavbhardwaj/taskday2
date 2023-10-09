@@ -4,17 +4,18 @@ pipeline {
     stage('Build') {
       steps {
         sh 'echo "Building..."'
+         sh "cd ${env.WORKSPACE}"
+          // Use find to locate folders with @tmp extension and delete them
+          sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+        
 
-        // Add a dir step to navigate to the workspace directory
+       
         
       }
     }
     stage('Test') {
       steps {
-        dir("${env.WORKSPACE}") {
-          // Use find to locate folders with @tmp extension and delete them
-          sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
-        }
+       
         sh 'echo "Testing..."'
       }
     }
