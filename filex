@@ -5,8 +5,11 @@ pipeline {
       steps {
         sh 'echo "Building..."'
         
+       dir("${env.WORKSPACE}") {
+          // Use sh to run the rm command to delete the @tmp and _ws_cleanup folders
+          sh 'rm -rf *@tmp *_ws_cleanup'
+        }
        
-        sh "rm -rf ${env.WORKSPACE}/cleanup@tmp"
 
       }
     }
