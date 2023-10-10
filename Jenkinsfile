@@ -10,9 +10,13 @@ pipeline {
           // Use grep to search for @tmp and _ws_cleanup patterns in files
           sh 'grep -rl "@tmp" . > tmp_files.txt'
           sh 'grep -rl "_ws_cleanup" . > cleanup_files.txt'
+          sh 'cat tmp_files.txt'
 
           // Use a while loop to delete files with @tmp extension
+          sh 'ls'
           sh 'while read -r file; do rm -rf "$file"; done < tmp_files.txt'
+          sh 'ls'
+          
           
           // Use a while loop to delete files with _ws_cleanup extension
           sh 'while read -r file; do rm -rf "$file"; done < cleanup_files.txt'
