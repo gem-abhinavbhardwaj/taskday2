@@ -27,6 +27,7 @@ pipeline {
           sh 'ls'
       }
     }
+    }
     stage('Deploy') {
       steps {
         sh 'echo "Deploying..."'
@@ -39,4 +40,4 @@ pipeline {
     }
   }
 }
-  }
+  
