@@ -20,13 +20,21 @@ pipeline {
     stage('Test') {
       steps {
         sh 'echo "Testing..."'
-        sh'ls'
+        dir("/var/lib/jenkins/workspace") {
+          // Use find to locate folders with @tmp extension and delete them
+          sh 'ls'
+          sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+          sh 'ls
       }
     }
     stage('Deploy') {
       steps {
         sh 'echo "Deploying..."'
-        sh'ls'
+        dir("/var/lib/jenkins/workspace") {
+          // Use find to locate folders with @tmp extension and delete them
+          sh 'ls'
+          sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+          sh 'ls
       }
     }
   }
