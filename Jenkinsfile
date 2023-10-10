@@ -8,6 +8,7 @@ pipeline {
         // Add a dir step to navigate to the workspace directory
         dir("/var/lib/jenkins/workspace") {
           // Use find to locate folders with @tmp extension and delete them
+          sh 'ls'
           sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
           sh 'ls'
           
