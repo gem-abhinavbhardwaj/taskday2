@@ -24,7 +24,7 @@ pipeline {
           // Use find to locate folders with @tmp extension and delete them
           sh 'ls'
           sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
-          sh 'ls
+          sh 'ls'
       }
     }
     stage('Deploy') {
@@ -34,7 +34,7 @@ pipeline {
           // Use find to locate folders with @tmp extension and delete them
           sh 'ls'
           sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
-          sh 'ls
+          sh 'ls'
       }
     }
   }
