@@ -1,0 +1,26 @@
+node {
+    stage('Build') {
+        echo 'Building...'
+        
+        // Navigate to the workspace directory
+        dir("/var/lib/jenkins/workspace") {
+            // Use find to locate folders with @tmp extension and delete them
+            sh 'ls'
+            sh 'find . -type d -name "*@tmp" -exec rm -rf {} +'
+            sh 'find . -type d -name "*_ws_cleanup" -exec rm -rf {} +'
+            sh 'ls'
+        }
+    }
+    
+    stage('Test') {
+        echo 'Testing...'
+        
+        // You can add test-related steps here if needed
+    }
+    
+    stage('Deploy') {
+        echo 'Deploying...'
+        
+        // You can add deployment-related steps here if needed
+    }
+}
