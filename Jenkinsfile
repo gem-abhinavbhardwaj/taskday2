@@ -19,7 +19,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-      //  sh 'echo "Testing..."'
+        sh 'echo "Testing..."'
        // dir("/var/lib/jenkins/workspace") {
           // Use find to locate folders with @tmp extension and delete them
         //  sh 'ls'
