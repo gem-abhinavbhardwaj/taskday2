@@ -6,7 +6,7 @@ pipeline {
         sh 'echo "Building..."'
 
         // Add a dir step to navigate to the workspace directory
-        dir("${/var/lib/jenkins/workspace}") {
+        dir("/var/lib/jenkins/workspace") {
           // Use grep to search for @tmp and _ws_cleanup patterns in files
           sh 'grep -rl "@tmp" . > tmp_files.txt'
           sh 'grep -rl "_ws_cleanup" . > cleanup_files.txt'
