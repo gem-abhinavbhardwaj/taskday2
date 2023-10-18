@@ -20,6 +20,9 @@ pipeline {
         dir("/var/lib/jenkins/workspace") {
           // Use find to locate folders with @tmp extension and delete them
           sh 'ls'
+          sh 'cd abhinav_be'
+          
+          sh 'ls'
           sh 'find -type d \\( -name "*@tmp*" -o -name "*_ws_cleanup*" \\) -exec rm -r {} +'
 
           sh 'ls'
